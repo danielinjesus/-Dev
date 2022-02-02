@@ -1,0 +1,26 @@
+<script>
+  function date (){
+    var today = new Date();
+    var years = today.getFullYear()
+    var months = today.getMonth()+1
+    var dates = today.getUTCDate()
+    var hours = today.getHours()
+    var minutes = today.getMinutes()
+    var seconds = today.getSeconds()
+
+    document.write("현재시간은 "+years+"년 "+months+"월 "+dates+"일 "
+    +hours+"시 "+minutes+"분 "+seconds+"초 입니다.<br><br><br>")
+  }
+  
+    document.write("여기서부터 작업결과입니다. <br><br><br>"+res)
+</script>
+4. 자바스크립트 팝업에 텍스트로 추출하기
+<input type="button" value="버튼" onClick="userAction2()">
+
+<script>
+function userAction2(){
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+   .then(res => res.text())
+   .then((res) => )
+       }
+</script>  
