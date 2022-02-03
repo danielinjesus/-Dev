@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- https://jsonplaceholder.typicode.com/posts/2 다른 api소스
+https://pythonwithvs.azurewebsites.net/api/test-python-vscode?name=aaa
+https://pythonwithvs.azurewebsites.net/api/test-python-vscode
+왜 안 될까. Azure Functions은.
+-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script> 
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+   function userAction1(){ 
+        $(function() {
+        $.ajax({
+        	url: "https://jsonplaceholder.typicode.com/posts/1",
+            type: "GET", 
+            success: function(data) {
+                insert_date() 
+                $('#content').html(JSON.stringify(data));
+                document.getElementById("1").style.backgroundColor="greenyellow"; 
+                document.getElementById("2").style.backgroundColor="#efefef";    
+                document.getElementById("3").style.backgroundColor="#efefef";  
+            }
+        })
+    })
+    }
+    function userAction2(){ 
+        $(function() {
+        $.ajax({
+        	url: "https://jsonplaceholder.typicode.com/posts/2",
+            type: "GET", 
+            success: function(data) {
+                insert_date() 
+                $('#content').html(JSON.stringify(data));
+                document.getElementById("2").style.backgroundColor="greenyellow"; 
+                document.getElementById("3").style.backgroundColor="#efefef";    
+                document.getElementById("1").style.backgroundColor="#efefef"; 
+            }
+        })
+    })
+    }
+
+    function userAction3(){ 
+        $(function() {
+        $.ajax({
+        	url: "https://jsonplaceholder.typicode.com/posts/5",
+            type: "GET", 
+            success: function(data) {
+            insert_date()
+            document.getElementById("3").style.backgroundColor="greenyellow";    
+            document.getElementById("2").style.backgroundColor="#efefef";    
+            document.getElementById("1").style.backgroundColor="#efefef";    
+            $('#content').html(JSON.stringify(data));
+            }
+        })
+        })
+        }
+    function insert_date(){
+            var today = new Date();
+            var years = today.getFullYear()
+            var months = today.getMonth()+1
+            var dates = today.getUTCDate()
+            var hours = today.getHours()
+            var minutes = today.getMinutes()
+            var seconds = today.getSeconds()
+            $('#time').html("<h3 color='red'>현재시간은 "+years+"년 "+months+"월 "+dates+"일 "
+    +hours+"시 "+minutes+"분 "+seconds+"초 입니다.</h3>");
+    }
+    userAction1()
+</script>
+</head>
+
+<body>
+    <h1 style="background-color:yellowgreen">This is normal API call test page.</h1>
+    <a href="ajax-test(func).html">go to the Az Function test page</a><p></p>
+    <input type="button" id="1" value="movie api 1" onClick="userAction1()">
+    <input type="button" id="2" value="movie api 2" onClick="userAction2()">
+    <input type="button" id="3" value="movie api 3" onClick="userAction3()">
+    <span id="time"></span>
+    <p id="content"></p>
+</body>
+</html>
